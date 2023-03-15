@@ -17,7 +17,18 @@ function opciones(opcion){
             promedioEdades(Number(prompt("Cuantas edades desea ingresar?")));
             break;
         case "4":
-            factorial(parseInt(prompt("De qué número desea sacar el factorial?")));
+            let n = 0;
+            do{
+                n = parseInt(prompt("De qué número desea sacar el factorial?"));
+            }while(isNaN(n))
+            factorial(n);
+            break;
+        case "5":
+            if(!confirm("Esta seguro que desea salir??")){
+                opciones(prompt("Seleccione una de las funciones a realizar:\n1. Calculadora.\n2. Calcular IMC (Indice de masa corporal).\n3. Promedio de edades.\n4. Factorial de un número.\n5. Salir.\nPor favor ingrese el número correspondiente."));
+            } else{
+                alert("Gracias por su visita, tenga buen día");
+            }
             break;
         default: 
             opciones(prompt("Por favor ingrese una opción válida (Ingrese el número)\n1. Calculadora.\n2. Calcular IMC (Indice de masa corporal).\n3. Promedio de edades.\n4. Factorial de un número\n5. Salir."));
@@ -37,9 +48,9 @@ function calculadora(operacion){
     switch(operacion){
         case "1": //suma
             let cantidad = parseInt(prompt("cuantos numeros desea sumar??"));
-            let sumNums = new Array(cantidad);
+            let sumNums = new Array(0);
             let suma = 0;
-            for (let i = 0; i < cantidad; i++) {
+            for (let i = 1; i <= cantidad; i++) {
                 sumNums.push(Number(prompt(`Ingrese el ${i}º numero`)));
             }
             for(let i = 0; i < sumNums.length; i++){
@@ -81,10 +92,16 @@ function calcularIMC(){
     let peso, altura, imc = 0;
     do{
         peso = Number(prompt("Ingrese su peso"));
-    }while(isNaN(peso))
+        if(peso == 0){
+            peso = NaN;
+        }
+    }while(isNaN(peso) && peso != 0)
     do{
         altura = Number(prompt("Ingrese su altura (en cm)"));
-    }while(isNaN(altura))
+        if(altura == 0){
+            altura = NaN;
+        }
+    }while(isNaN(altura) && altura != 0)
     imc = peso / ((altura/100)**2);
     if(imc < 18.5){
         alert(`Su índice de masa es ${imc}\nUsted esta con bajo peso`);
@@ -103,7 +120,7 @@ function calcularIMC(){
 }
 
 function promedioEdades(cantidad){
-    let edades = new Array(cantidad);
+    let edades = new Array(0);
     let promedio = 0;
     for(let i = 1; i <= cantidad; i++){
         edades.push(Number(prompt(`Ingrese la ${i}ª edad.`)));
@@ -119,10 +136,9 @@ function promedioEdades(cantidad){
     }
 }
 
-function factorial(){
-    let numF = ingresarNumeros();
+function factorial(numF){
     let fact = 1;
-    for (let i = 1; i < numF; i++) {
+    for (let i = 1; i <= numF; i++) {
         fact = fact * i;
     }
     alert(`El factorial de ${numF} es: ${fact}`);
