@@ -36,10 +36,10 @@ function opciones(opcion){
     }
 }
 
-function ingresarNumeros(){
+function ingresarNumeros(desc="Ingrese un número"){
     let num = 0;
     do{
-        num = Number(prompt("Ingrese un número"));
+        num = Number(prompt(desc));
     }while(isNaN(num))
     return num;
 }
@@ -51,7 +51,7 @@ function calculadora(operacion){
             let sumNums = new Array(0);
             let suma = 0;
             for (let i = 1; i <= cantidad; i++) {
-                sumNums.push(Number(prompt(`Ingrese el ${i}º numero`)));
+                sumNums.push(ingresarNumeros(`Ingrese el ${i}º numero`));
             }
             for(let i = 0; i < sumNums.length; i++){
                 suma += sumNums[i];
