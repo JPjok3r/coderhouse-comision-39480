@@ -1,3 +1,30 @@
-body{
-    background-color: rgb(31, 30, 30);
+@import url(https://fonts.googleapis.com/css?family=Orbitron:700);
+
+
+* {
+  text-align: center;
+  box-sizing: border-box;
+}
+
+body {
+  background: Black;
+  color: rgb(255, 60, 0);
+  font-family: 'Orbitron', sans-serif;
+  animation: all .7s;
+}
+
+.contenedor {
+  margin: 10%;
+  padding: 10px;
+  background: rgba(100, 100, 100, 0.3);
+}
+
+.t {
+  font-size: 2em;
+}
+
+.timeis {
+  width: 100%;
+  padding: 10px;
+  font-size: 3em;
 }
